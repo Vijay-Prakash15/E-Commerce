@@ -13,12 +13,10 @@ export const addNewProduct = createAsyncThunk(
       "http://localhost:5000/api/admin/products/add",
       formData,
       {
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
       }
     );
-
     return result?.data;
   }
 );
@@ -27,9 +25,9 @@ export const fetchAllProducts = createAsyncThunk(
   "/products/fetchAllProducts",
   async () => {
     const result = await axios.get(
-      "http://localhost:5000/api/admin/products/get"
+      "http://localhost:5000/api/admin/products/get",
+      { withCredentials: true }
     );
-
     return result?.data;
   }
 );
@@ -41,12 +39,10 @@ export const editProduct = createAsyncThunk(
       `http://localhost:5000/api/admin/products/edit/${id}`,
       formData,
       {
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
       }
     );
-
     return result?.data;
   }
 );
@@ -55,9 +51,9 @@ export const deleteProduct = createAsyncThunk(
   "/products/deleteProduct",
   async (id) => {
     const result = await axios.delete(
-      `http://localhost:5000/api/admin/products/delete/${id}`
+      `http://localhost:5000/api/admin/products/delete/${id}`,
+      { withCredentials: true }
     );
-
     return result?.data;
   }
 );

@@ -24,7 +24,21 @@ const commonFeatureRouter = require("./routes/common/feature-routes");
 // 🔗 MongoDB Connection
 mongoose
   .connect(process.env.MONGO_URI)
-  .then(() => console.log("MongoDB connected"))
+  .then(() => {
+    console.log("MongoDB connected");
+    // Drop stale unique indexes if they exist from a previous schema
+    mongoose.connection.db
+      .collection("users")
+      .dropIndex("userName_1")
+      .then(() => console.log("Dropped stale 'userName' index"))
+      .catch(() => {}); // Silently ignore if index doesn't exist
+
+    mongoose.connection.db
+      .collection("users")
+      .dropIndex("name_1")
+      .then(() => console.log("Dropped stale 'name' index"))
+      .catch(() => {}); // Silently ignore if index doesn't exist
+  })
   .catch((error) => console.log("MongoDB error:", error));
 
 const app = express();

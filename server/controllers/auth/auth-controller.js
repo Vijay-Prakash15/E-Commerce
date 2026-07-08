@@ -28,9 +28,16 @@ const registerUser = async (req, res) => {
     });
   } catch (e) {
     console.log(e);
+    if (e.code === 11000) {
+      const field = Object.keys(e.keyPattern)[0];
+      return res.status(400).json({
+        success: false,
+        message: `An account with this ${field} already exists.`,
+      });
+    }
     res.status(500).json({
       success: false,
-      message: "Some error occured",
+      message: "Registration failed. Please try again.",
     });
   }
 };
