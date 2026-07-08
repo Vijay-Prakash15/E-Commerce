@@ -138,8 +138,8 @@ function ShoppingHeader() {
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background">
       <div className="flex h-16 items-center justify-between px-4 md:px-6">
-        <Link to="/shop/home" className="flex items-center gap-2">
-          <img src="/logo.png" alt="VastraKart Logo" className="h-6 w-6 object-contain" />
+        <Link to="/shop/home" className="flex items-center gap-2 hover:opacity-90 transition-opacity">
+          <img src="/logo.png" alt="VastraKart Logo" className="h-9 w-9 object-contain transition-transform hover:scale-105 duration-200" />
           <span className="font-bold">VastraKart</span>
         </Link>
         <Sheet>
