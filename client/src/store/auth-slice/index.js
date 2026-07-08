@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import { api } from "@/config/api";
 
 const initialState = {
   isAuthenticated: false,
@@ -11,75 +11,73 @@ export const registerUser = createAsyncThunk(
   "/auth/register",
   async (formData, { rejectWithValue }) => {
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/auth/register",
-        formData,
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await api.post("/auth/register", formData);
       return response.data;
     } catch (error) {
-      return rejectWithValue(error.response?.data || { success: false, message: "Server connection failed" });
+      return rejectWithValue(
+        error.response?.data || {
+          success: false,
+          message: "Server connection failed",
+        },
+      );
     }
-  }
+  },
 );
 
 export const loginUser = createAsyncThunk(
   "/auth/login",
   async (formData, { rejectWithValue }) => {
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/auth/login",
-        formData,
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await api.post("/auth/login", formData);
       return response.data;
     } catch (error) {
-      return rejectWithValue(error.response?.data || { success: false, message: "Server connection failed" });
+      return rejectWithValue(
+        error.response?.data || {
+          success: false,
+          message: "Server connection failed",
+        },
+      );
     }
-  }
+  },
 );
 
 export const logoutUser = createAsyncThunk(
   "/auth/logout",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/auth/logout",
-        {},
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await api.post("/auth/logout");
       return response.data;
     } catch (error) {
-      return rejectWithValue(error.response?.data || { success: false, message: "Server connection failed" });
+      return rejectWithValue(
+        error.response?.data || {
+          success: false,
+          message: "Server connection failed",
+        },
+      );
     }
-  }
+  },
 );
 
 export const checkAuth = createAsyncThunk(
   "/auth/checkauth",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get(
-        "http://localhost:5000/api/auth/check-auth",
-        {
-          withCredentials: true,
-          headers: {
-            "Cache-Control":
-              "no-store, no-cache, must-revalidate, proxy-revalidate",
-          },
-        }
-      );
+      const response = await api.get("/auth/check-auth", {
+        headers: {
+          "Cache-Control":
+            "no-store, no-cache, must-revalidate, proxy-revalidate",
+        },
+      });
       return response.data;
     } catch (error) {
-      return rejectWithValue(error.response?.data || { success: false, message: "Server connection failed" });
+      return rejectWithValue(
+        error.response?.data || {
+          success: false,
+          message: "Server connection failed",
+        },
+      );
     }
-  }
+  },
 );
 
 const authSlice = createSlice({

@@ -1,4 +1,4 @@
-
+import {api} from "@/config/api";
 import { FileIcon, UploadCloudIcon, XIcon } from "lucide-react";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
