@@ -46,8 +46,8 @@ function AuthRegister() {
         
         {/* Brand/Logo Area */}
         <div className="z-10 flex items-center gap-2">
-          <ShoppingCart className="w-8 h-8" />
-          <span className="text-xl font-bold tracking-wider">ECOMMERCE</span>
+          <img src="/logo.png" alt="VastraKart Logo" className="w-8 h-8 object-contain" />
+          <span className="text-xl font-bold tracking-wider">VastraKart</span>
         </div>
 
         {/* Hero Copy */}
@@ -78,7 +78,7 @@ function AuthRegister() {
 
         {/* Footer info */}
         <div className="z-10 text-xs text-white/70">
-          © 2026 ECommerce Shopping. All rights reserved.
+          © 2026 VastraKart. All rights reserved.
         </div>
       </div>
 

@@ -42,8 +42,8 @@ function AuthLogin() {
 
       <div className="w-full max-w-md bg-white/95 backdrop-blur-lg rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-slate-200/50 p-8 space-y-6 z-10 transition-all duration-300 hover:shadow-2xl">
         <div className="text-center space-y-2">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 mb-2">
-            <ShoppingBag className="w-6 h-6" />
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl mb-2">
+            <img src="/logo.png" alt="VastraKart Logo" className="w-12 h-12 object-contain" />
           </div>
           <h1 className="text-3xl font-extrabold tracking-tight text-slate-900">
             Welcome Back
